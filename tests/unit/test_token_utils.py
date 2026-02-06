@@ -4,7 +4,7 @@ import pytest
 from pathlib import Path
 from unittest.mock import AsyncMock, MagicMock, patch
 
-from bindu.utils.token_utils import (
+from bindu.utils.agent_token_utils import (
     get_client_credentials_token,
     get_agent_token_from_credentials_file,
     introspect_token,

@@ -5,7 +5,7 @@ This client handles communication with Ory Hydra's Admin API for token operation
 
 from __future__ import annotations as _annotations
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 from urllib.parse import quote
 
 from bindu.utils.http_client import AsyncHTTPClient

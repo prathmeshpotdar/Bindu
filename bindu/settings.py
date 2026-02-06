@@ -790,7 +790,7 @@ class VaultSettings(BaseSettings):
         default="",
         validation_alias=AliasChoices("VAULT__TOKEN", "VAULT_TOKEN"),
     )
-    
+
     # Enable/disable Vault
     enabled: bool = False
 
@@ -817,7 +817,9 @@ class OAuthSettings(BaseSettings):
     )
     notion_client_secret: str = Field(
         default="",
-        validation_alias=AliasChoices("OAUTH__NOTION_CLIENT_SECRET", "NOTION_CLIENT_SECRET"),
+        validation_alias=AliasChoices(
+            "OAUTH__NOTION_CLIENT_SECRET", "NOTION_CLIENT_SECRET"
+        ),
     )
 
     # Google OAuth (for Gmail)
@@ -827,7 +829,9 @@ class OAuthSettings(BaseSettings):
     )
     google_client_secret: str = Field(
         default="",
-        validation_alias=AliasChoices("OAUTH__GOOGLE_CLIENT_SECRET", "GOOGLE_CLIENT_SECRET"),
+        validation_alias=AliasChoices(
+            "OAUTH__GOOGLE_CLIENT_SECRET", "GOOGLE_CLIENT_SECRET"
+        ),
     )
 
     # GitHub OAuth
@@ -837,7 +841,9 @@ class OAuthSettings(BaseSettings):
     )
     github_client_secret: str = Field(
         default="",
-        validation_alias=AliasChoices("OAUTH__GITHUB_CLIENT_SECRET", "GITHUB_CLIENT_SECRET"),
+        validation_alias=AliasChoices(
+            "OAUTH__GITHUB_CLIENT_SECRET", "GITHUB_CLIENT_SECRET"
+        ),
     )
 
 

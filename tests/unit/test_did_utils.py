@@ -29,7 +29,7 @@ class TestValidateDIDExtension:
 
         is_valid, error = validate_did_extension(mock_ext, "did")
         assert is_valid is False
-        assert "missing 'did' attribute" in error
+        assert error is not None and "missing 'did' attribute" in error
 
     def test_different_required_attr(self):
         """Test validation with different required attribute."""

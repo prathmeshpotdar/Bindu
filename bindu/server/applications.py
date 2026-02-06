@@ -234,7 +234,6 @@ class BinduApplication(Starlette):
         if self._x402_ext:
             self._register_payment_endpoints()
 
-
     def _register_payment_endpoints(self) -> None:
         """Register payment session endpoints."""
         from .endpoints import (

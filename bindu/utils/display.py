@@ -170,9 +170,11 @@ def prepare_server_display(
 
     # Print token retrieval command if credentials are available
     if client_id and client_secret:
-        console.print(Text("🔑 Get Access Token:", style="bold yellow"), highlight=False)
+        console.print(
+            Text("🔑 Get Access Token:", style="bold yellow"), highlight=False
+        )
         curl_cmd = (
-            f'curl -X POST https://hydra.getbindu.com/oauth2/token \\\n'
+            f"curl -X POST https://hydra.getbindu.com/oauth2/token \\\n"
             f'  -H "Content-Type: application/x-www-form-urlencoded" \\\n'
             f'  -d "grant_type=client_credentials" \\\n'
             f'  -d "client_id={client_id}" \\\n'
@@ -181,7 +183,10 @@ def prepare_server_display(
         )
         console.print(Text(curl_cmd, style="dim"), highlight=False)
         console.print(
-            Text("📁 Find your client_secret in: .bindu/oauth_credentials.json", style="italic cyan"),
+            Text(
+                "📁 Find your client_secret in: .bindu/oauth_credentials.json",
+                style="italic cyan",
+            ),
             highlight=False,
         )
         console.print()

@@ -134,7 +134,7 @@ async def register_agent_in_hydra(
         ) as hydra:
             # Check if client already exists in Hydra
             existing_client = await hydra.get_oauth_client(client_id)
-            
+
             if existing_client:
                 # Client exists in Hydra - check if we have local credentials
                 existing_creds = load_agent_credentials(did, credentials_dir)

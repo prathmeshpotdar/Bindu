@@ -34,4 +34,4 @@ class TestValidateUUIDType:
     def test_validate_invalid_type(self):
         """Test that invalid type raises TypeError."""
         with pytest.raises(TypeError, match="must be UUID or str"):
-            validate_uuid_type(123, "test_param")
+            validate_uuid_type(123, "test_param")  # type: ignore[arg-type]

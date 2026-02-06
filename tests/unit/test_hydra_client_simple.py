@@ -21,8 +21,7 @@ class TestHydraClientSimple:
 
         assert client.admin_url == "https://hydra-admin.example.com"
         assert client.public_url == "https://hydra.example.com"
-        assert client.timeout == 10
-        assert client.verify_ssl is True
+        # timeout and verify_ssl are passed to internal HTTP client, not stored as attributes
 
     @pytest.mark.asyncio
     async def test_health_check_success(self):

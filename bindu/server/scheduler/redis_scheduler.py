@@ -136,7 +136,9 @@ class RedisScheduler(Scheduler):
         while True:
             try:
                 # Blocking pop with configurable timeout (reduces API calls for free tier)
-                result = await self._redis_client.blpop(self.queue_name, timeout=self.poll_timeout)
+                result = await self._redis_client.blpop(
+                    self.queue_name, timeout=self.poll_timeout
+                )
 
                 if result:
                     _, task_data = result

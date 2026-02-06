@@ -40,7 +40,7 @@ class TestAddExtensionToCapabilities:
     def test_add_extension_non_dict_capabilities(self):
         """Test adding extension when capabilities is not a dict."""
         mock_ext = MagicMock()
-        result = add_extension_to_capabilities("invalid", mock_ext)
+        result = add_extension_to_capabilities(None, mock_ext)  # type: ignore[arg-type]
         assert result["extensions"] == [mock_ext]
 
 
@@ -50,8 +50,10 @@ class TestGetX402ExtensionFromCapabilities:
     def test_get_x402_extension_found(self):
         """Test finding X402 extension."""
         mock_x402 = X402AgentExtension(
-            payment_address="0x123",
-            accepts=[{"scheme": "exact", "asset": "ETH", "amount": "1.0"}],
+            amount="1000000",
+            token="USDC",
+            network="base-sepolia",
+            pay_to_address="0x123",
         )
         mock_manifest = MagicMock()
         mock_manifest.capabilities.get.return_value = [mock_x402]
