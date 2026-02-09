@@ -15,7 +15,7 @@ from agno.models.openrouter import OpenRouter
 # Define your agent
 agent = Agent(
     instructions="You are a research assistant that finds and summarizes information.",
-    model=OpenRouter(id="openai/gpt-4o"),
+    model=OpenRouter(id="openai/gpt-oss-120b"),
     tools=[DuckDuckGoTools()],
 )
 
