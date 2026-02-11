@@ -449,15 +449,7 @@ Go to frontend then `npm run dev`
 
 Bindu supports the **X402 payment protocol**, enabling you to monetize your AI agents by requiring cryptocurrency payments before executing specific methods. This allows you to build paid AI services with native blockchain payment integration.
 
-### 🎯 Overview
-
-The X402 payment system allows you to:
-- **Gate specific methods** behind micropayments (e.g., `message/send`)
-- **Accept USDC payments** on Base Sepolia testnet (or mainnet)
-- **Automatic payment verification** via blockchain signatures
-- **Session-based payment flow** with browser-based wallet integration
-
-### 📋 Configuration
+### Configuration
 
 Add the `execution_cost` configuration to your agent config to enable payment gating:
 
@@ -479,14 +471,7 @@ config = {
 }
 ```
 
-**Configuration Parameters:**
-- `amount`: Payment amount in USD format (e.g., `"$0.0001"`, `"$1.00"`)
-- `token`: Currently supports `"USDC"` (USD Coin)
-- `network`: Blockchain network - use `"base-sepolia"` for testing, `"base"` for production
-- `pay_to_address`: Your Ethereum wallet address where payments will be sent
-- `protected_methods`: Array of JSON-RPC methods that require payment (e.g., `["message/send"]`)
-
-### 🔧 Setup for Testing
+### Setup for Testing
 
 #### 1. Create a Crypto Wallet
 
@@ -525,7 +510,7 @@ Add your wallet address to the agent config:
 "pay_to_address": "0xYourWalletAddressHere"  # Replace with your actual address
 ```
 
-### 🚀 Payment Flow
+### Payment Flow
 
 #### Step 1: Start a Payment Session
 
@@ -564,7 +549,7 @@ curl --location --request POST 'http://localhost:3773/api/start-payment-session'
 4. Approve and sign the transaction
 5. Wait for blockchain confirmation
 
-![Payment Required Screen](assets/payment-required-base.png)
+<img src="assets/payment-required-base.png" alt="Payment Required Screen" width="500" />
 
 #### Step 3: Verify Payment Status
 
@@ -584,12 +569,7 @@ curl --location 'http://localhost:3773/api/payment-status/<session_id>' \
 }
 ```
 
-![Payment Success Screen](assets/payment-required-success.png)
-
-**Response Fields:**
-- `session_id`: The payment session identifier
-- `status`: Payment status (`completed` means payment verified)
-- `payment_token`: JWT token to include in subsequent API calls
+<img src="assets/payment-required-success.png" alt="Payment Success Screen" width="500" />
 
 #### Step 4: Use the Agent with Payment Token
 
@@ -613,7 +593,7 @@ curl --location 'http://localhost:3773/' \
 }'
 ```
 
-### 📝 Example Implementation
+### Example Implementation
 
 See the complete example at:
 ```
@@ -622,7 +602,13 @@ examples/beginner/echo_agent_behind_paywall.py
 
 ### UI Integration
 
-From UI you can get the access token and use it to make the payment session.
+From the UI, you can obtain the access token and use it to initiate payment sessions.
+
+**Important Payment Behavior:**
+- Each new task requires payment when the agent is behind a paywall
+- If a task returns `input_required` status, no payment is needed for that interaction
+- Once a task completes successfully, a new payment is required for the next task, even within the same conversation/context
+- Payment tokens are task-specific and cannot be reused across multiple completed tasks
 
 ---
 
